@@ -1,38 +1,62 @@
 .App {
+  background-color: #F5F5F3;
+  color: rgba(0,0,0, 0.88);
+  font-family: Consolas;
+}
+
+article {
+  width: 100vw;
   text-align: center;
+  font-size: 40px;
+  padding-top: 200px;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Consolas;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.mainHeader {
+  height: 75px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
+  font-size: 12px;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1.title {
+  font-family: Consolas;
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
+  line-height: 75px;
+  margin-left: 25px;
 }
+
+ul.menu {
+  margin: 50px 0px 0px 60px;
+  padding: 0px;
+  display: inline-block;
+  position: fixed;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 25px;
+  font-weight: normal;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+li.selected {
+  list-style-type: "> ";
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
