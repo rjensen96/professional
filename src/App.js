@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar } from './components/Navbar';
 import './App.css';
-import { SideMenu } from './components/SideMenu';
 import { MainContent } from './components/MainContent';
 
 // DEPLOYMENT:
@@ -15,11 +14,9 @@ import { MainContent } from './components/MainContent';
 
 function App() {
   
-  
   return (
     <div className="App container">
       <Navbar />
-      {/* <SideMenu /> */}
       <MainContent />
     </div>
   );
