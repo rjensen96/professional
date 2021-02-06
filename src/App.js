@@ -1,7 +1,8 @@
-import React from 'react';
-import { Navbar } from './components/Navbar';
-import './App.css';
-import { MainContent } from './components/MainContent';
+import React, { useState } from "react";
+import { Navbar } from "./components/Navbar";
+import "./App.css";
+import { MainContent } from "./components/MainContent";
+import { DisplayContext } from "./DisplayContext";
 
 // DEPLOYMENT:
 
@@ -11,13 +12,15 @@ import { MainContent } from './components/MainContent';
 // git commit -m "Your awesome message"
 // git push origin master
 
-
 function App() {
-  
+  let [menuChoice, setMenuChoice] = useState("Education");
+
   return (
     <div className="App container">
       <Navbar />
-      <MainContent />
+      <DisplayContext.Provider value={{ menuChoice, setMenuChoice }}>
+        <MainContent />
+      </DisplayContext.Provider>
     </div>
   );
 }

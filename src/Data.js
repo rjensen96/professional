@@ -1,3 +1,6 @@
+// work dates: include months everywhere
+// en dash inbetween dates
+
 export const RESUME = [
     {
         itemType: "Education",

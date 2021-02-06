@@ -5,6 +5,7 @@
 }
 
 .mainBody {
+  padding-top: 75px;
   padding-bottom: 75px;
   font-family: Consolas;
   display: grid;
@@ -18,8 +19,6 @@ nav {
 .container {
   min-height: 100vh;
   margin-left: auto;
-  min-width: calc(100vw - 17px);
-  /* width: 100%; */
 }
 
 .mainHeader {
@@ -28,6 +27,10 @@ nav {
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
   font-size: 12px;
   text-align: left;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  margin-bottom: 75px;
 }
 
 h1.title {
@@ -43,6 +46,7 @@ ul.menu {
   margin: 50px 0px 0px 60px;
   padding: 0px;
   display: inline-block;
+  position: fixed;
 }
 
 li {
