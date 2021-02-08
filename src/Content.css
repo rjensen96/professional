@@ -71,3 +71,34 @@ header .logo {
 .profileImage {
   max-width: 25%;
 }
+
+.gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameHeader {
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+}
+
+h2.gameHeader {
+  font-size: 14pt;
+}
+
+.iconSet {
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  font-size: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0px 20px 0px 20px;
+  flex-wrap: wrap;
+}
+
+.iconWrapper {
+  width: 50px;
+  margin: 15px;
+}

@@ -6,7 +6,7 @@ import { RESUME } from "../Data";
 const ResumeItem = (props) => {
   return (
     <article>
-      <Paper elevation={0} borderRadius={7}>
+      <Paper elevation={1} borderRadius={7}>
         <div className="mainCard">
           <header>
             <div className="logo">

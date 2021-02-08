@@ -9,11 +9,19 @@ import { Skills } from "./Skills";
 
 const contentOptions = {
   Education: <ResumeList itemType="Education" />,
-  Experience: <ResumeList itemType="Experience" />,
-  Skills: <Skills />,
+  Experience: (
+    <div>
+      <ResumeList itemType="Experience" />
+      <Skills />
+    </div>
+  ),
+  // Skills: <Skills />,
   "About Me": <AboutMe />,
   "For Fun": <SnakeGame />,
 };
+
+// in AboutMe, try using an imagelist to display those images. Preformatted and gapped.
+// in SnakeGame, add a colorpicker thing to let user choose colors for snake.
 
 export const MainContent = () => {
   let { menuChoice, setMenuChoice } = useContext(DisplayContext);
