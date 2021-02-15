@@ -26,39 +26,56 @@ export const AboutMe = () => {
   shuffle(pics);
   return (
     <section className="mainCard">
-      <ImageGridList />
+      {/* <ImageGridList /> */}
+      <BasicImageGrid />
     </section>
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-  },
-  gridList: {
-    // width: "auto",
-  },
-}));
-
-const ImageGridList = () => {
-  const classes = useStyles();
-
+const BasicImageGrid = () => {
   return (
-    <div className={classes.root}>
-      <GridList cellHeight={200} className={classes.gridList} cols={4}>
-        {pics.map((tile, idx) => (
-          <GridListTile key={idx} cols={tile.cols || 1}>
-            <img src={process.env.PUBLIC_URL + tile} alt={"image " + idx} />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
+    <section class="collageContainer">
+      {pics.map((title, idx) => (
+        <img
+          src={process.env.PUBLIC_URL + title}
+          alt={"image " + idx}
+          className="profileImage"
+        />
+      ))}
+    </section>
   );
 };
 
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     display: "flex",
+//     flexWrap: "wrap",
+//     justifyContent: "space-around",
+//     overflow: "hidden",
+//     backgroundColor: theme.palette.background.paper,
+//   },
+//   gridList: {
+//     // width: "auto",
+//   },
+// }));
+
+// const ImageGridList = () => {
+//   const classes = useStyles();
+
+//   return (
+//     <div className={classes.root}>
+//       <GridList cellHeight={200} className={classes.gridList} cols={4}>
+//         {pics.map((tile, idx) => (
+//           <GridListTile key={idx} cols={tile.cols || 1}>
+//             <img src={process.env.PUBLIC_URL + tile} alt={"image " + idx} />
+//           </GridListTile>
+//         ))}
+//       </GridList>
+//     </div>
+//   );
+// };
+
 // also, would be cool to have a list of adjectives that describe...
 // the adjectives "type themselves" as user scrolls down the page.
+
+// blur images while loading https://css-tricks.com/the-blur-up-technique-for-loading-background-images/

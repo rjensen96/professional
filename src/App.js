@@ -9,7 +9,7 @@ import { DisplayContext } from "./DisplayContext";
 // npm run deploy
 
 // git add .
-// git commit -m "Your awesome message"
+// git commit -m "Message here"
 // git push origin master
 
 function App() {

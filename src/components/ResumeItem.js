@@ -1,7 +1,7 @@
 import { Paper } from "@material-ui/core";
 import React from "react";
 import "../Content.css";
-import { RESUME } from "../Data";
+import { RESUME, COURSEWORK } from "../Data";
 
 const ResumeItem = (props) => {
   return (
@@ -12,7 +12,7 @@ const ResumeItem = (props) => {
             <div className="logo">
               <img
                 src={process.env.PUBLIC_URL + props.data.image}
-                alt="BYU"
+                alt={props.data.title}
                 height={50}
                 width={50}
               ></img>
@@ -27,14 +27,38 @@ const ResumeItem = (props) => {
             </div>
           </header>
 
-          <div>
+          <ul>
             {props.data.listItems.map((itm, idx) => (
-              <p key={idx}>{itm}</p>
+              <li key={idx}>{itm}</li>
             ))}
-          </div>
+          </ul>
+
+          {/* {props.data.itemType === "Education" ? <Coursework /> : <div />} */}
         </div>
       </Paper>
     </article>
+  );
+};
+
+// I don't love this yet. Haven't styled it yet but it's a lot of data.
+const Coursework = (props) => {
+  return (
+    <section>
+      {COURSEWORK.map((course) => (
+        <section>
+          <h1>{course.category}</h1>
+          {course.courses.map((schoolClass) => (
+            <div>
+              <h2>
+                {schoolClass.name}: {schoolClass.about}
+              </h2>
+              {/* <p>{schoolClass.about}</p> */}
+              <p>{schoolClass.skills}</p>
+            </div>
+          ))}
+        </section>
+      ))}
+    </section>
   );
 };
 

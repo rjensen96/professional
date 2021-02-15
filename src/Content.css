@@ -9,6 +9,17 @@ article body {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
+article li {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  list-style: circle;
+  list-style-position: outside;
+  padding-left: 10px;
+}
+
+article li:hover {
+  cursor: auto;
+}
+
 .locationTime {
   text-align: right;
   margin-left: auto;
@@ -64,8 +75,9 @@ header .logo {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px 4px 4px 4px;
   overflow: hidden;
+  justify-content: space-between;
 }
 
 .profileImage {
@@ -93,7 +105,7 @@ h2.gameHeader {
   font-size: 50px;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 0px 20px 0px 20px;
   flex-wrap: wrap;
 }

@@ -1,3 +1,5 @@
+import p5 from "p5";
+
 // Constants: gameplay mechanics
 const GAME_FRAME_RATE = 10;
 const FOOD_SPAWN_RATE = 15;
@@ -47,6 +49,20 @@ export const draw = (p5) => {
   bigSnake.move(p5);
   bigSnake.eat();
   totnum++;
+};
+
+export const resetGame = () => {
+  //TODO: implement something like this:
+  //https://www.youtube.com/watch?v=lm8Y8TD4CTM&ab_channel=TheCodingTrain
+  //use p5DOM to reset the sketch....
+  gameStarted = 0;
+  totnum = 0;
+  numEaten = 0;
+  food = [];
+  xAdd = 0;
+  yAdd = 0;
+  gameEnded = 0;
+  score = 0;
 };
 
 function startGame() {
