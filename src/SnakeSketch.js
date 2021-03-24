@@ -1,6 +1,5 @@
-import p5 from "p5";
-
 // Constants: gameplay mechanics
+let p5Lib;
 const GAME_FRAME_RATE = 10;
 const FOOD_SPAWN_RATE = 15;
 const FOOD_SCORE_MULTIPLE = 10;
@@ -33,36 +32,23 @@ export let gameEnded = 0;
 export let score = 0;
 
 export const setup = (p5, parentRef) => {
-  p5.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT).parent(parentRef);
-  p5.colorMode(p5.RGB);
-  p5.frameRate(GAME_FRAME_RATE);
-  p5.background(COLOR_BACKGROUND);
-  p5SnakeColor = p5.color(COLOR_SNAKE);
+  p5Lib = p5;
+  p5Lib.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT).parent(parentRef);
+  p5Lib.colorMode(p5Lib.RGB);
+  p5Lib.frameRate(GAME_FRAME_RATE);
+  p5Lib.background(COLOR_BACKGROUND);
+  p5SnakeColor = p5Lib.color(COLOR_SNAKE);
 };
 
-export const draw = (p5) => {
+export const draw = () => {
   startGame();
-  p5.clear();
-  p5.background(COLOR_BACKGROUND);
-  placeFood(p5);
-  bigSnake.renderMe(p5);
-  bigSnake.move(p5);
+  p5Lib.clear();
+  p5Lib.background(COLOR_BACKGROUND);
+  placeFood(p5Lib);
+  bigSnake.renderMe(p5Lib);
+  bigSnake.move(p5Lib);
   bigSnake.eat();
   totnum++;
-};
-
-export const resetGame = () => {
-  //TODO: implement something like this:
-  //https://www.youtube.com/watch?v=lm8Y8TD4CTM&ab_channel=TheCodingTrain
-  //use p5DOM to reset the sketch....
-  gameStarted = 0;
-  totnum = 0;
-  numEaten = 0;
-  food = [];
-  xAdd = 0;
-  yAdd = 0;
-  gameEnded = 0;
-  score = 0;
 };
 
 function startGame() {
@@ -71,6 +57,20 @@ function startGame() {
     gameStarted = 1; // so that we never do this again
   }
 }
+
+export const resetGame = (resetFrameRate = false) => {
+  gameStarted = 0;
+  totnum = 0;
+  numEaten = 0;
+  food = [];
+  xAdd = 0;
+  yAdd = 0;
+  score = 0;
+  gameEnded = 0;
+  if (resetFrameRate) {
+    p5Lib.frameRate(GAME_FRAME_RATE);
+  }
+};
 
 document.addEventListener("keydown", handleKeyPress);
 
@@ -95,7 +95,7 @@ function handleKeyPress(e) {
   return false;
 }
 
-function placeFood(p5) {
+function placeFood() {
   // list the grid options
   let xOpt = [];
   let yOpt = [];
@@ -113,13 +113,13 @@ function placeFood(p5) {
     const y = yOpt[Math.floor(Math.random() * yOpt.length)];
     const fruitsnack = new GameBlock(x, y);
 
-    fruitsnack.makeFruity(p5);
+    fruitsnack.makeFruity();
     food.push(fruitsnack);
   }
-  food.forEach((snack) => snack.renderMe(p5));
+  food.forEach((snack) => snack.renderMe());
 }
 
-function gameOver(p5) {
+function gameOver() {
   console.log("GAME ENDED!!");
 
   gameEnded = 1;
@@ -128,11 +128,11 @@ function gameOver(p5) {
   // redraw board so we can turn the snake red
   // TODO: consider putting this within the Snake.renderMe() method
 
-  p5.clear();
-  p5.background(COLOR_BACKGROUND);
-  placeFood(p5);
-  bigSnake.renderMe(p5);
-  p5.frameRate(0);
+  p5Lib.clear();
+  p5Lib.background(COLOR_BACKGROUND);
+  placeFood(p5Lib);
+  bigSnake.renderMe(p5Lib);
+  p5Lib.frameRate(0);
 
   console.log("final score: " + numEaten * FOOD_SCORE_MULTIPLE);
 }
@@ -143,8 +143,8 @@ class Snake {
     this.growing = false;
   }
 
-  renderMe(p5) {
-    this.chunks.forEach((chunk) => chunk.renderMe(p5));
+  renderMe() {
+    this.chunks.forEach((chunk) => chunk.renderMe());
   }
 
   changeColor(newColor) {
@@ -153,7 +153,7 @@ class Snake {
     });
   }
 
-  move(p5) {
+  move() {
     let copyHead = this.headAsCopy;
     copyHead.incrementItem(); // increment it
     this.chunks.push(copyHead); // put it back on the snake at front
@@ -167,7 +167,7 @@ class Snake {
       for (let i = 0; i < this.chunks.length - 1; i++) {
         const snakeChunk = this.chunks[i];
         if (snakeChunk.x === copyHead.x && snakeChunk.y === copyHead.y) {
-          gameOver(p5);
+          gameOver();
         }
       }
     }
@@ -222,8 +222,8 @@ class GameBlock {
     return this._yval;
   }
 
-  makeFruity(p5) {
-    this.myColor = p5.color(COLOR_FOOD); // re-use this class for fruitsnacks. make those fruity.
+  makeFruity() {
+    this.myColor = p5Lib.color(COLOR_FOOD); // re-use this class for fruitsnacks. make those fruity.
   }
 
   incrementItem() {
@@ -245,9 +245,9 @@ class GameBlock {
     return this;
   }
 
-  renderMe(p5) {
-    p5.fill(this.myColor);
-    p5.stroke(BLOCK_STROKE_WIDTH);
-    p5.rect(this._xval, this._yval, BLOCK_WIDTH, BLOCK_WIDTH);
+  renderMe() {
+    p5Lib.fill(this.myColor);
+    p5Lib.stroke(BLOCK_STROKE_WIDTH);
+    p5Lib.rect(this._xval, this._yval, BLOCK_WIDTH, BLOCK_WIDTH);
   }
 }

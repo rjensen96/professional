@@ -4,7 +4,7 @@ import "../App.css";
 import { ResumeList } from "./ResumeItem";
 import { DisplayContext } from "../DisplayContext";
 import { AboutMe } from "./AboutMe";
-import { SnakeGame } from "./SnakeGame";
+import { SnakeGame } from "./snake-game/SnakeGame";
 import { Skills } from "./Skills";
 
 const contentOptions = {

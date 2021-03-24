@@ -84,21 +84,6 @@ header .logo {
   max-width: 25%;
 }
 
-.gameContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gameHeader {
-  text-align: center;
-  padding: 5px 0px 5px 0px;
-}
-
-h2.gameHeader {
-  font-size: 14pt;
-}
-
 .iconSet {
   color: rgba(0, 0, 0, 0.7);
   display: flex;
